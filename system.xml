@@ -1,0 +1,80 @@
+<project name="system" basedir="E:/" default="bsnl">
+
+<target name="clean">
+<delete dir="bsnl"/>
+</target>
+
+<target name="create">
+<mkdir dir="E:/bsnl/conf/domain"/>
+<mkdir dir="E:/bsnl/lib/jar"/>
+<mkdir dir="E:/bsnl/data/imp"/>
+<mkdir dir="E:/bsnl/tmp/int"/>
+<mkdir dir="E:/bsnl/logs/java"/>
+<mkdir dir="E:/bsnl/bin/shell"/>
+<mkdir dir="E:/bsnl/java/classes"/>
+</target>
+
+<target name="compile">
+<javac srcdir="E:\software" destdir="E:\bsnl\logs\java" includeantruntime="true"/>
+</target>
+
+<target name="copy">
+<copy todir="E:\bsnl\logs/java">
+<fileset dir="E:\software">
+<exclude name="**/*.java"/>
+</fileset>
+</copy>
+
+<copy todir="E:/bsnl/conf">
+<fileset dir="E:\" includes="**/*.properties"/>
+<filterset> 
+<filter token="custname" value="$userinput"/> 
+<filter token="custage" value="23"/> 
+<filter token="custplace" value="india"/> 
+</filterset> 
+</copy>
+</target>
+
+<filelist id="configfiles" dir="E:\india">
+<file name="one.txt"/>
+<file name="two.txt"/>
+</filelist>
+
+
+<target name="copy1">
+<copy todir="E:\bsnl\conf\domain">
+<filelist refid="configfiles"/>
+</copy>
+</target>
+
+<target name="replace">
+<input
+message="What is your name? :"
+addproperty="userinput"
+defaultvalue="class"
+/>
+<fileset dir="E:\" includes="**/*.properties"/>
+<filterset> 
+<filter token="custname" value="${userinput}"/> 
+</filterset>
+</target>
+
+
+
+<target name="package">
+<zip zipfile="E:/bsnl/lib/system.zip" basedir="E:/bsnl"/>
+<jar jarfile="E:/bsnl/lib/systemt1.jar" basedir="E:/bsnl"/>
+</target>
+
+
+<target name="bsnl" depends="clean,create,compile,copy,copy1,replace,package">
+<mkdir dir="E:/bsnl/bin/shell"/>
+<copy file="E:/one.txt" todir="E:/bsnl/conf"/>
+<copy file="E:/software/Hi.java" todir="E:/bsnl/java"/>
+<copy file="E:/software/Bye.java" todir="E:/bsnl/java"/>
+<copy file="E:/software/HelloWorld.java" todir="E:/bsnl/java"/>
+	</target>
+
+
+
+</project>

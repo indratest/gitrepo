@@ -25,7 +25,8 @@
 </target>
 
 <target name="copyFiles" depends="compilation" description="copying the existing files.">
-	<copy file="${src.dir}/*.java" todir="${dest.dir}/conf/java"/>
+	<copy file="${src.dir}/HelloWorld.java" todir="${dest.dir}/conf/java"/>
+	<copy file="${src.dir}/Hi.java" todir="${dest.dir}/conf/java"/>
 </target>
 
 <target name="package" depends="copyFiles" description="packaging the source code.">

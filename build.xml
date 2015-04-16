@@ -56,7 +56,8 @@
 </target>
 
 
-<target name="ReportsUnit" depends="JunitTest" description="reporting the test cases.>
+<target name="ReportsUnit" depends="JunitTest" description="reporting the test cases">
+
 <junitreport todir="${dest.dir}/reports">
   <fileset dir="${dest.dir}/reports">
     <include name="TEST-*.xml"/>

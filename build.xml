@@ -19,7 +19,7 @@
 	<mkdir dir="${classes.dir}"/>
 	<mkdir dir="${dest.dir}/bin"/>
 	<mkdir dir="${dest.dir}/tmp"/>
-	<mkdir dir="${dest.dir}/logs"/>
+	<mkdir dir="${dest.dir}/reports"/>
 </target>
 
 
@@ -47,18 +47,26 @@
 	<formatter type="xml"/>
 <!--	<test name="TestHello"/> -->
 	<classpath refid="projClasspath"/>
-	<batchtest fork="yes" todir="${dest.dir}/tmp">
+<!--	<batchtest fork="yes" todir="${dest.dir}/tmp">
 		<fileset dir="${dest.dir}/conf/test">
 			<include name="HWTest.java"/>
 		</fileset>
-	</batchtest>
+	</batchtest> -->
 </junit>
 </target>
 
 
+<target name="ReportsUnit" depends="JunitTest" description="reporting the test cases.>
+<junitreport todir="${dest.dir}/reports">
+  <fileset dir="${dest.dir}/reports">
+    <include name="TEST-*.xml"/>
+  </fileset>
+  <report format="frames" todir="${dest.dir}/reports/html"/>
+</junitreport>
+</target>
 
 
-<target name="package" depends="JunitTest" description="packaging the source code.">
+<target name="package" depends="ReportsUnit" description="packaging the source code.">
 	<zip destfile="${dest.dir}/lib/${PROJECT_NAME}.zip"
 		basedir="${classes.dir}"
 		includes="*.class">

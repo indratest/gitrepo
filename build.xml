@@ -1,7 +1,7 @@
 <project name="alt-demo" basedir="." default="package">
 
-<property name="dest.dir" value="${WORKSPACE}/alt-demo"/>
-<property name="src.dir" value="${WORKSPACE}/javafiles"/>
+<property name="dest.dir" value="alt-demo"/>
+<property name="src.dir" value="${dest.dir}/javafiles"/>
 <property name="classes.dir" value="${dest.dir}/conf/classes"/>
 
 
@@ -21,7 +21,7 @@
 </target>
 
 <target name="compilation" depends="initialize" description="compiling source code.">
-	<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+	<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
 </target>
 
 <target name="copyFiles" depends="compilation" description="copying the existing files.">

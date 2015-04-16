@@ -45,11 +45,11 @@
 
 <junit printsummary="yes" haltonfailure="yes" showoutput="yes">
 	<formatter type="xml"/>
-	<test name="TestHello"/>
+<!--	<test name="TestHello"/> -->
 	<classpath refid="projClasspath"/>
 	<batchtest fork="yes" todir="${dest.dir}/tmp">
 		<fileset dir="${dest.dir}/conf/test">
-			<include name="*Test*.java"/>
+			<include name="HWTest.java"/>
 		</fileset>
 	</batchtest>
 </junit>

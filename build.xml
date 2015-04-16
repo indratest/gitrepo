@@ -45,7 +45,8 @@
 
 <junit printsummary="yes" fork="yes" haltonfailure="yes">
 	<formatter type="xml"/>
-	<classpath refid="${projClasspath}"/>
+	<test name="TestHello"/>
+	<classpath refid="projClasspath"/>
 	<batchtest fork="true">
 		<fileset dir="${dest.dir}/conf/test">
 			<include name="*Test*.java"/>

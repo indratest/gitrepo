@@ -43,7 +43,7 @@
 
 <target name="JunitTest" depends="compilation" description="run the tests">
 
-<junit printsummary="yes" haltonfailure="yes" fork="yes">
+<junit printsummary="yes" haltonfailure="no" fork="yes">
 	<formatter type="xml"/>
 <!--	<test name="TestHello"/> -->
 	<classpath refid="projClasspath"/>

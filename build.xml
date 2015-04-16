@@ -15,19 +15,23 @@
 	<mkdir dir="${dest.dir}"/>
 	<mkdir dir="${dest.dir}/lib"/>
 	<mkdir dir="${dest.dir}/conf/java"/>
+	<mkdir dir="${dest.dir}/conf/test"/>
 	<mkdir dir="${classes.dir}"/>
 	<mkdir dir="${dest.dir}/bin"/>
 	<mkdir dir="${dest.dir}/tmp"/>
 	<mkdir dir="${dest.dir}/logs"/>
 </target>
 
-<target name="compilation" depends="initialize" description="compiling source code.">
-	<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
-</target>
 
-<target name="copyFiles" depends="compilation" description="copying the existing files.">
+<target name="copyFiles" depends="initialize" description="copying the existing files.">
 	<copy file="${src.dir}/HelloWorld.java" todir="${dest.dir}/conf/java"/>
 	<copy file="${src.dir}/Hi.java" todir="${dest.dir}/conf/java"/>
+	<copy file="${src.dir}/HWTest.java" todir="${dest.dir}/conf/test"/>
+</target>
+
+
+<target name="compilation" depends="copyFiles" description="compiling source code.">
+	<javac srcdir="${dest.dir}/conf/java" destdir="${classes.dir}" includeantruntime="false"/>
 </target>
 
 
@@ -37,12 +41,12 @@
 </path>
 
 
-<target name="JunitTest" depends="copyFiles" description="run the tests">
+<target name="JunitTest" depends="compilation" description="run the tests">
 
 <junit printsummary="yes" fork="yes" haltonfailure="yes">
 	<formatter type="xml"/>
 	<batchtest fork="true">
-		<fileset dir="${dest.dir}/conf/java">
+		<fileset dir="${dest.dir}/conf/test">
 			<include name="*Test*.java"/>
 		</fileset>
 	</batchtest>

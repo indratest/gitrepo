@@ -4,7 +4,7 @@ public class TestHello extends TestCase {
   
     public void testHello()
     {
-        Hello h = new Hello();
+        Helloh = new Hello();
         assertEquals(h.greet(), "Hello, world");
     }
 }

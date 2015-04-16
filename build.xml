@@ -43,11 +43,11 @@
 
 <target name="JunitTest" depends="compilation" description="run the tests">
 
-<junit printsummary="yes" fork="yes" haltonfailure="yes">
+<junit printsummary="yes" haltonfailure="yes" showoutput="yes">
 	<formatter type="xml"/>
 	<test name="TestHello"/>
 	<classpath refid="projClasspath"/>
-	<batchtest fork="true">
+	<batchtest fork="yes" todir="${dest.dir}/tmp">
 		<fileset dir="${dest.dir}/conf/test">
 			<include name="*Test*.java"/>
 		</fileset>

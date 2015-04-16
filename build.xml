@@ -32,15 +32,15 @@
 
 
 <path id="project.classpath">
+<pathelement location="junit-4.11.jar"/>
 <pathelement location="${classes.dir}"/>
-<pathelement location="${dest.dir}/lib"/>
 </path>
 
 
 <target name="JunitTest" depends="copyFiles" description="run the tests">
 
 <junit printsummary="yes" fork="yes" haltonfailure="yes">
-	<formatter type="plain"/>
+	<formatter type="xml"/>
 	<batchtest fork="true">
 		<fileset dir="${dest.dir}/conf/java">
 			<include name="*Test*.java"/>

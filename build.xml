@@ -43,15 +43,15 @@
 
 <target name="JunitTest" depends="compilation" description="run the tests">
 
-<junit printsummary="yes" haltonfailure="yes" showoutput="yes">
+<junit printsummary="yes" haltonfailure="yes" fork="yes">
 	<formatter type="xml"/>
 <!--	<test name="TestHello"/> -->
 	<classpath refid="projClasspath"/>
-<!--	<batchtest fork="yes" todir="${dest.dir}/tmp">
-		<fileset dir="${dest.dir}/conf/test">
-			<include name="HWTest.java"/>
+	<batchtest fork="yes" todir="${dest.dir}/tmp">
+		<fileset dir="${classes.dir}">
+			<includes="*.class"/>
 		</fileset>
-	</batchtest> -->
+	</batchtest> 
 </junit>
 </target>
 

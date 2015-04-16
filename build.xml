@@ -50,8 +50,7 @@
 	<batchtest fork="yes" todir="${dest.dir}/tmp">
 		<fileset dir="${classes.dir}"
 			includes="*.class"/>
-		</fileset>
-	</batchtest> 
+		</batchtest> 
 </junit>
 </target>
 

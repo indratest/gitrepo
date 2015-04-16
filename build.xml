@@ -4,13 +4,13 @@
 <property name="src.dir" value="javafiles"/>
 <property name="classes.dir" value="${dest.dir}/conf/classes"/>
 
-
+<!--
 <target name="wipeout" description="cleaning the existing code.">
 	<delete dir="${dest.dir}"/>
-</target>
+</target> -->
 
 
-<target name="initialize" depends="wipeout" description="creating folders.">
+<target name="initialize" description="creating folders.">
 	<mkdir dir="${dest.dir}"/>
 	<mkdir dir="${dest.dir}/lib"/>
 	<mkdir dir="${dest.dir}/conf/java"/>
@@ -25,7 +25,7 @@
 </target>
 
 <target name="copyFiles" depends="compilation" description="copying the existing files.">
-	<copy file="C:/indra-ant/*.xml" todir="${dest.dir}/conf"/>
+	<copy file="*.xml" todir="${dest.dir}/conf"/>
 	<copy file="${src.dir}/*.java" todir="${dest.dir}/conf/java"/>
 </target>
 

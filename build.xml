@@ -25,7 +25,6 @@
 </target>
 
 <target name="copyFiles" depends="compilation" description="copying the existing files.">
-	<copy file="${WORKSPACE}/*.xml" todir="${dest.dir}/conf"/>
 	<copy file="${src.dir}/*.java" todir="${dest.dir}/conf/java"/>
 </target>
 

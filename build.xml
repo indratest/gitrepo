@@ -30,7 +30,30 @@
 	<copy file="${src.dir}/Hi.java" todir="${dest.dir}/conf/java"/>
 </target>
 
-<target name="package" depends="copyFiles" description="packaging the source code.">
+
+<path id="project.classpath">
+<pathelement location="${classes.dir}"/>
+<pathelement location="${dest.dir}/lib"/>
+</path>
+
+
+<target name="JunitTest" depends="copyFiles" description="run the tests">
+
+<junit printsummary="yes" fork="yes" haltonfailure="yes">
+	<formatter type="plain"/>
+	<batchtest fork="true">
+		<fileset dir="${dest.dir}/conf/java">
+			<include name="*Test*.java"/>
+		</fileset>
+	</batchtest>
+	<classpath refid="${project.classpath}"/>
+</junit>
+</target>
+
+
+
+
+<target name="package" depends="JunitTest" description="packaging the source code.">
 	<zip destfile="${dest.dir}/lib/${PROJECT_NAME}.zip"
 		basedir="${classes.dir}"
 		includes="*.class">

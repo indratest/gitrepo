@@ -48,8 +48,8 @@
 <!--	<test name="TestHello"/> -->
 	<classpath refid="projClasspath"/>
 	<batchtest fork="yes" todir="${dest.dir}/tmp">
-		<fileset dir="${classes.dir}">
-			<includes="*.class"/>
+		<fileset dir="${classes.dir}"
+			includes="*.class"/>
 		</fileset>
 	</batchtest> 
 </junit>

@@ -1,7 +1,7 @@
 <project name="alt-demo" basedir="." default="package">
 
 <property name="dest.dir" value="alt-demo"/>
-<property name="src.dir" value="${dest.dir}/javafiles"/>
+<property name="src.dir" value="javafiles"/>
 <property name="classes.dir" value="${dest.dir}/conf/classes"/>
 
 

@@ -1,0 +1,51 @@
+<project name="alt-demo" basedir="." default="package">
+
+<property name="dest.dir" value="${WORKSPACE}/alt-demo"/>
+<property name="src.dir" value="${WORKSPACE}/javafiles"/>
+<property name="classes.dir" value="${dest.dir}/conf/classes"/>
+
+
+<target name="wipeout" description="cleaning the existing code.">
+	<delete dir="${dest.dir}"/>
+</target>
+
+
+<target name="initialize" depends="wipeout" description="creating folders.">
+	<mkdir dir="${dest.dir}"/>
+	<mkdir dir="${dest.dir}/lib"/>
+	<mkdir dir="${dest.dir}/conf/java"/>
+	<mkdir dir="${classes.dir}"/>
+	<mkdir dir="${dest.dir}/bin"/>
+	<mkdir dir="${dest.dir}/tmp"/>
+	<mkdir dir="${dest.dir}/logs"/>
+</target>
+
+<target name="compilation" depends="initialize" description="compiling source code.">
+	<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+</target>
+
+<target name="copyFiles" depends="compilation" description="copying the existing files.">
+	<copy file="C:/indra-ant/*.xml" todir="${dest.dir}/conf"/>
+	<copy file="${src.dir}/*.java" todir="${dest.dir}/conf/java"/>
+</target>
+
+<target name="package" depends="copyFiles" description="packaging the source code.">
+	<zip destfile="${dest.dir}/lib/${PROJECT_NAME}.zip"
+		basedir="${classes.dir}"
+		includes="*.classes">
+	</zip>
+
+	<jar destfile="${dest.dir}/lib/${PROJECT_NAME}.jar"
+		basedir="${classes.dir}"
+		includes="*.classes">
+	</jar>
+
+	<war 
+		needxmlfile="false"
+		destfile="${dest.dir}/lib/${PROJECT_NAME}.war"
+		basedir="${classes.dir}"
+		includes="*.classes">
+	</war>
+</target>
+
+</project>

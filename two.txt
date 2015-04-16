@@ -1,2 +1,0 @@
-this is jira testing
-this is for jenkins testing

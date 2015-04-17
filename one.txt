@@ -1,2 +1,3 @@
 testing for post hooks.
 testing remote trigger.
+checking build automation.

@@ -11,7 +11,7 @@
 </target> -->
 
 
-<target name="initialize" description="creating folders.">
+<target name="initialize" description="creating folder structure.">
 	<mkdir dir="${dest.dir}"/>
 	<mkdir dir="${dest.dir}/lib"/>
 	<mkdir dir="${dest.dir}/conf/java"/>
